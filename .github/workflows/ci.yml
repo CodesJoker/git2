@@ -1,0 +1,26 @@
+name: deploy
+# 触发工作流程的事件
+on:
+  push:
+    branches:
+      - main
+# 按顺序运行作业
+jobs:
+  #任务ID
+  checkout:
+    #任务名称
+    name: checkout
+    # 指定任务的运行环境
+    runs-on: ubantu-latest
+
+    #执行步骤
+    steps:
+    - name: checkout code to target machine
+      uses: actions/checkout@v3
+      with: 
+         repository: CodesJoker/git2
+         path: git2
+
+  
+  
+  
