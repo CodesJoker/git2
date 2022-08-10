@@ -18,14 +18,14 @@ jobs:
     - name: checkout code to target machine
       uses: actions/checkout@v3
       with: 
-         repository: CodesJoker/git1
          ref: main
     - run: |
-        git config user.name CodesJoker
-        git config user.email 2983937743@qq.com
+        ls
         git checkout -b prd
         git fetch --all
         git reset --hard origin/main
+        ls
+        git status
         git remote add master git@github.com:CodesJoker/git2.git
         git add .
         git commit -m "test"
