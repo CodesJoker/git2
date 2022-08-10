@@ -24,10 +24,12 @@ jobs:
         git config user.name CodesJoker
         git config user.email 2983937743@qq.com
         git checkout -b prd
-        git remote add origin git@github.com:CodesJoker/git2.git
+        git fetch --all
+        git reset --hard origin/main
+        git remote add master git@github.com:CodesJoker/git2.git
         git add .
         git commit -m "test"
-        git push -u origin main
+        git push -u master main
   
   
   
