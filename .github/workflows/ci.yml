@@ -18,9 +18,13 @@ jobs:
     - name: checkout code to target machine
       uses: actions/checkout@v3
       with: 
-         repository: CodesJoker/git2
-         path: git2
-
+         repository: CodesJoker/git2.git
+    - run: |
+        git config user.name CodesJoker
+        git config user.email 2983937743@qq.com
+        git add .
+        git commit -m "test"
+        git push
   
   
   
