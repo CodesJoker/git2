@@ -18,11 +18,9 @@ jobs:
       uses: actions/checkout@v3
       with: 
          ref: main
-      env: 
-        EMAIL: 2983937743@qq.com
     - run: |
-        ssh-keygen -t rsa -C ${{EMAIL}}
+        ssh-keygen -t rsa -C 2983937743@qq.com
         git config user.name CodesJoker
-        git config user.email ${{EMAIL}}
+        git config user.email 2983937743@qq.com
         git remote add master git@github.com:CodesJoker/git2.git
         git push --force master
