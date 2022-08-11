@@ -12,20 +12,17 @@ jobs:
     name: checkout
     # 指定任务的运行环境
     runs-on: ubuntu-latest
-
     #执行步骤
     steps:
     - name: checkout code to target machine
       uses: actions/checkout@v3
       with: 
          ref: main
+      env: 
+        EMAIL: 2983937743@qq.com
     - run: |
-        echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC2rTvGT2xb4wUqSANU0/kRW5mUChPQ2Y0IX++iQHOyhhKw8IEjJ6yMD7/ZKP7WC3Ozuyrc3J5WVWTi0OTzFCTcb1aAyz3Mp79ZLX25qRxjO/816mRHpHtjf6Rg4g9fKAbPLZO2Fb2n0eZhmVaPe3ZJODlBGVW4o94ybVIbJhtsL7CcjVZH9gTb5amO3jh8yzoQK3UBxRBxPDm8yv7a84b1lSFCitL0sgS7D5ckeuJ426cpo2sbgunrzAUBE82vIj8f5fZBLrAc+z1Lu7Y7kcI7afIjXY7/61v9Dc3RauUEGcesPjGS5LP0xrlcppxAtnltE4LDvlb3Ov5q5TnX2xt+WbL9oakKYBsGsjx7JBIQmsQnwpK1U8+BKs6tfFDMqAeIE7waMtX69LMaXNJE7I5eiTt5hHhLcSvjTPZJKMnanLpBNEYzh7YndptrXtezrs9yXK4pRSq94b1CWcYkJrJe9VJWll7SumKbwKHoAxXJ6YBUmdAv5uYcBhKu1/6c9HE= 2983937743@qq.com
-' >> ~/.ssh/id_rsa.pub
+        ssh-keygen -t rsa -C ${{EMAIL}}
         git config user.name CodesJoker
-        git config user.email 2983937743@qq.com
+        git config user.email ${{EMAIL}}
         git remote add master git@github.com:CodesJoker/git2.git
         git push --force master
-  
-  
-  
