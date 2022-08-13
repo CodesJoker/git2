@@ -19,7 +19,6 @@ jobs:
       with: 
          ref: main
     - run: |
-        ssh-keygen -t rsa -C 2983937743@qq.com
         git config user.name CodesJoker
         git config user.email 2983937743@qq.com
         git remote add master git@github.com:CodesJoker/git2.git
