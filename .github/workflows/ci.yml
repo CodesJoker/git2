@@ -11,8 +11,12 @@ jobs:
     runs-on: ubuntu-latest # 使用ubuntu系统镜像运行自动化脚本
     steps: # 自动化步骤
       #任务名称
-      - name: mirror push
-          - uses: actions/checkout@v3 # 第一步，下载代码仓库
-          - name: Deploy to Server    # 第二步，推文件到服务器
-              env: 
-                GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: auto push
+          - uses: Yikun/hub-mirror-action@master # 第一步，下载代码仓库
+            with:
+            src: github/CodesJoker
+            dst: github/CodesJoker
+            dst_key: ${{secrets.PRIVATE_KEY}}
+            dst_token: ${{secrets.ACCESS_TOKEN}}
+            force_update: true
+            mappings: "git1=>git2"
