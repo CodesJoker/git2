@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - prd
 # 按顺序运行作业
 jobs:
   #任务ID
