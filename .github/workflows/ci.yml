@@ -15,8 +15,8 @@ jobs:
         uses: Yikun/hub-mirror-action@master # 第一步，下载代码仓库
         with:
           src: github/CodesJoker # 源项目github账号\CodesJoker\git1\security
-          dst: github/CodesJoker # push目标账户
-          dst_key: ${{secrets.PRIVATE_KEY}} # ssh公钥
-          dst_token: ${{secrets.ACCESS_TOKEN}} #API TOKEN
+          dst: github/zerowolf001 # push目标账户
+          dst_key: ${{secrets.ZF_PRIVATE_KEY}} # ssh私钥
+          dst_token: ${{secrets.ZF_ACCESS_TOKEN}} #API TOKEN
           force_update: true
           mappings: "git1=>git2"
