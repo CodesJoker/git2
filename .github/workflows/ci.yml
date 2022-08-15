@@ -10,11 +10,11 @@ jobs:
   deploy:
     runs-on: ubuntu-latest # 使用ubuntu系统镜像运行自动化脚本
     steps: # 自动化步骤
-      #任务名称2
+      #任务名称3
       - name: auto push
         uses: Yikun/hub-mirror-action@master # 第一步，下载代码仓库
         with:
-          src: github/CodesJoker # 源项目github账号
+          src: github/CodesJoker # 源项目github账号\CodesJoker\git1\security
           dst: github/CodesJoker # push目标账户
           dst_key: ${{secrets.PRIVATE_KEY}} # ssh公钥
           dst_token: ${{secrets.ACCESS_TOKEN}} #API TOKEN
