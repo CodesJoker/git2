@@ -12,11 +12,11 @@ jobs:
     steps: # 自动化步骤
       #任务名称
       - name: auto push
-          - uses: Yikun/hub-mirror-action@master # 第一步，下载代码仓库
-            with:
-            src: github/CodesJoker
-            dst: github/CodesJoker
-            dst_key: ${{secrets.PRIVATE_KEY}}
-            dst_token: ${{secrets.ACCESS_TOKEN}}
-            force_update: true
-            mappings: "git1=>git2"
+        uses: Yikun/hub-mirror-action@master # 第一步，下载代码仓库
+        with:
+          src: github/CodesJoker
+          dst: github/CodesJoker
+          dst_key: ${{secrets.PRIVATE_KEY}}
+          dst_token: ${{secrets.ACCESS_TOKEN}}
+          force_update: true
+          mappings: "git1=>git2"
