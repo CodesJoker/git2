@@ -14,9 +14,9 @@ jobs:
       - name: auto push
         uses: Yikun/hub-mirror-action@master # 第一步，下载代码仓库
         with:
-          src: github/CodesJoker
-          dst: github/CodesJoker
-          dst_key: ${{secrets.PRIVATE_KEY}}
-          dst_token: ${{secrets.ACCESS_TOKEN}}
+          src: github/CodesJoker # 源项目github账号
+          dst: github/CodesJoker # push目标账户
+          dst_key: ${{secrets.PRIVATE_KEY}} # ssh公钥
+          dst_token: ${{secrets.ACCESS_TOKEN}} #API TOKEN
           force_update: true
           mappings: "git1=>git2"
