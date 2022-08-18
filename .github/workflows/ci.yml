@@ -38,10 +38,10 @@ jobs:
       - name: 检出本地代码
         uses: actions/checkout@v3
     steps: 
-      run: |
-        git config user.name CodesJoker
-        git config user.email 2983937743@qq.com
-        git remote add main git@github.com:CodesJoker/git2.git
-        git add .
-        git commit -m 'auto push'
-        git push -f
+      - run: |
+          git config user.name CodesJoker
+          git config user.email 2983937743@qq.com
+          git remote add main git@github.com:CodesJoker/git2.git
+          git add .
+          git commit -m 'auto push'
+          git push -f
