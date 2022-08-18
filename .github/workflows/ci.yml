@@ -37,8 +37,8 @@ jobs:
     steps: 
       - name: 检出本地代码
         uses: actions/checkout@v3
-    steps: 
-      - run: |
+      - name: 同步代码
+        run: |
           git config user.name CodesJoker
           git config user.email 2983937743@qq.com
           git remote add main git@github.com:CodesJoker/git2.git
