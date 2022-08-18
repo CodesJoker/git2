@@ -1,23 +1,86 @@
-name: deploy
-# 触发工作流程的事件
+# name: deploy
+# # 触发工作流程的事件
+# on:
+#   push:
+#     branches:
+#       - main
+#       - prd
+# # 按顺序运行作业
+# jobs:
+#   #任务ID
+#   deploy:
+#     runs-on: ubuntu-latest # 使用ubuntu系统镜像运行自动化脚本
+#     steps: # 自动化步骤
+#       #任务名称
+#       - name: auto push
+#         uses: Yikun/hub-mirror-action@master # 第一步，下载代码仓库
+#         with:
+#           src: github/CodesJoker # 源项目github账号\CodesJoker\git1\security
+#           dst: github/zerowolf001 # push目标账户
+#           dst_key: ${{secrets.ZF_PRIVATE_KEY}} # ssh私钥
+#           dst_token: ${{secrets.ZF_ACCESS_TOKEN}} #API TOKEN
+#           force_update: true
+#           # mappings: "git1=>git2"
+#           # static_list: "hub-mirror-action" #不会动态获取源端github/Yikun的repos，仅同步hub-mirror-action这个repo
+
+
+name: deplay
 on:
-  push:
-    branches:
+  push: 
+    branches: 
       - main
-      - prd
 # 按顺序运行作业
-jobs:
-  #任务ID
+jobs: 
+#任务ID
   deploy:
     runs-on: ubuntu-latest # 使用ubuntu系统镜像运行自动化脚本
-    steps: # 自动化步骤
-      #任务名称3
-      - name: auto push
-        uses: Yikun/hub-mirror-action@master # 第一步，下载代码仓库
-        with:
-          src: github/CodesJoker # 源项目github账号\CodesJoker\git1\security
-          dst: github/zerowolf001 # push目标账户
-          dst_key: ${{secrets.ZF_PRIVATE_KEY}} # ssh私钥
-          dst_token: ${{secrets.ZF_ACCESS_TOKEN}} #API TOKEN
-          force_update: true
-          mappings: "git1=>git2"
+    steps: 
+      - name: 检出本地代码
+        uses: actions/checkout@v3
+        with: 
+          ssh-key: '-----BEGIN OPENSSH PRIVATE KEY-----
+b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABlwAAAAdzc2gtcn
+NhAAAAAwEAAQAAAYEAtq07xk9sW+MFKkgDVNP5EVuZlAoT0NmNCF/vokBzsoYSsPCBIyes
+jA+/2Sj+1gtzs7sq3NyeVlVk4tDk8xQk3G9WgMs9zKe/WS19uakcYzv/NepkR6R7Y3+kYO
+IPXygGzy2TthW9p9HmYZlWj3t2STg5QRlVuKPeMm1SGyYbbC+wnI1WR/YE2+Wpjt44fMs6
+ECt1AcUQcTw5vMr+2vOG9ZUhQorS9LIEuw+XJHrieNunKaNrG4Lp68wFARPNryI/H+X2QS
+6wHPs9S7u2O5HCO2nyI12O/+tb/Q3N0WrlBBnHrD4xkuSz9Ma5XKacQLZ5bROCw75W9zr+
+auU519sbflmy/aGpCmAbBrI8eyQSEJrEJ8KStVPPgSrOrXxQzKgHiBO8GjLV+vSzGlzSRO
+yOXok7eYR4S3Er40z2SSjJ2py6QTRGM4e2J3aba17Xs67PclyuKUUqveG9QlnGJCayXvVS
+VpZe0rpim8Ch6AMVyemAVJnQL+bmHAYSrtf+nPRxAAAFiCuGNskrhjbJAAAAB3NzaC1yc2
+EAAAGBALatO8ZPbFvjBSpIA1TT+RFbmZQKE9DZjQhf76JAc7KGErDwgSMnrIwPv9ko/tYL
+c7O7KtzcnlZVZOLQ5PMUJNxvVoDLPcynv1ktfbmpHGM7/zXqZEeke2N/pGDiD18oBs8tk7
+YVvafR5mGZVo97dkk4OUEZVbij3jJtUhsmG2wvsJyNVkf2BNvlqY7eOHzLOhArdQHFEHE8
+ObzK/trzhvWVIUKK0vSyBLsPlyR64njbpymjaxuC6evMBQETza8iPx/l9kEusBz7PUu7tj
+uRwjtp8iNdjv/rW/0NzdFq5QQZx6w+MZLks/TGuVymnEC2eW0TgsO+Vvc6/mrlOdfbG35Z
+sv2hqQpgGwayPHskEhCaxCfCkrVTz4Eqzq18UMyoB4gTvBoy1fr0sxpc0kTsjl6JO3mEeE
+txK+NM9kkoydqcukE0RjOHtid2m2te17Ouz3JcrilFKr3hvUJZxiQmsl71UlaWXtK6YpvA
+oegDFcnpgFSZ0C/m5hwGEq7X/pz0cQAAAAMBAAEAAAGAPWaEzOctOMVZmxiRZhXJhbgQKt
+4oQu6cpM/6L8MSIFNIPQjZnwNaz8kLZuaMoU1AGo0ynwHYhpQ1ULd9/OYsbZtOrAOkRgGs
+I0FTHPBmhkRIR8r84ce7YXopuhbBq+48O67KE03DbYDzuqJboeaRn5KyS9tEIMeTi8eK7W
+0lknuFFVm8QnvCrlbHYyn2OpvkbELvFSUznZvsnDRu7RElr63se/1FYtHjHSzkVHKpZI4P
+5cLz4U9jaMoudGo/nDoaA3/QH+MAFRla845SstyIyzT6AYKvthtdo3kWWrMugc6YAZw4/D
+bYv1dDvLSjwXfACXNBUOi1CoQ3jWmpq/hjve0meo1knlA1kvvT0pEkTCcPeQJTOmEgOChL
+oaF2oN5/PDK497xpFi6repLmauvWmnGd2CQDAUbpzShHRZT+OlIV5kpEeYbSh66k+u8vGC
+0JCkYz6kf66+nPVHMEfoQum/k+gitoOG8q2oh0TcikCAetYNPvyMJi9ducl8BdlYKxAAAA
+wQDpnLBYW4pHLSXciHsBuRfXkkoas67NEyDQv2GrZsBE5V4nr1SXG7Olcf/VvevyaXmhcx
+Pg5pTTW5JDBvn8vl7tQsHAw8cwGwd4kfCZV0GFVH/R/arP50ND4XVFsniuzDl5VUOZblIq
+hygdu/H0PKyv5ILnAoOn1Z6UUfQZTKoYsx9H8s8Tg1j8Ulzya8b7zEsRpNHhecoGaPlghi
+de4eGV51wZS2AzE2h0AVPndhpdVTnVJ2gZV5+TEjJlhgT7IhEAAADBAO6KR+9nMcGHbjfC
+soV99lP9xrF2nk9Yic9ZYghmQVCBjNh3wI97W+FqGDkL1y7NLbHC2AfE0Ha4k7SNsnjrRb
+dRxmaqkgS/uGaLugthVk7jELRudWd89f+KTfsAMMcJGTQJUxsu/m9N7R19ZDIlF9jJuVvR
+MxlULfU19JkYyZMunNjxJxAmHi8gCGtkhuCbXvXzrqGrhNvoGWw/yezWN8jRImctAApa+z
+dWqvk5QdPu+fsX4pGWmELeUoZnSfUb/wAAAMEAxAwxmahBUdAhTTqgfugyRRJj/WZAf1ry
+i+aa4NkFc2JgqirSWb0N/19iAtPNmVTk49wALJZk2t06HXsZ+DmE6TAhTwGDMvDmnAsYsu
+wSq8iUcX6ljBSNoDV+ZaFbizWXgc6RmLqpufRi3VPR84OfK+M01dt9qV/xYL9UFhjKCZmH
+z13pftPzAfJ7Rgfdu13NpwwACRDTKV6d8+sdtwEdGcrPzvEhARfSwXzOF3/Y4W9f/hmm/2
+X4T4alqw47ca+PAAAAETI5ODM5Mzc3NDNAcXEuY29tAQ==
+-----END OPENSSH PRIVATE KEY-----
+'
+        run: |
+          git config user.name CodesJoker
+          git config user.email 2983937743@qq.com
+          git remote add main git@github.com:CodesJoker/git2.git
+          git add .
+          git commit -m 'auto push'
+          git push -f
