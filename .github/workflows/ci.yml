@@ -75,12 +75,12 @@ i+aa4NkFc2JgqirSWb0N/19iAtPNmVTk49wALJZk2t06HXsZ+DmE6TAhTwGDMvDmnAsYsu
 wSq8iUcX6ljBSNoDV+ZaFbizWXgc6RmLqpufRi3VPR84OfK+M01dt9qV/xYL9UFhjKCZmH
 z13pftPzAfJ7Rgfdu13NpwwACRDTKV6d8+sdtwEdGcrPzvEhARfSwXzOF3/Y4W9f/hmm/2
 X4T4alqw47ca+PAAAAETI5ODM5Mzc3NDNAcXEuY29tAQ==
------END OPENSSH PRIVATE KEY-----
-'
-        run: |
-          git config user.name CodesJoker
-          git config user.email 2983937743@qq.com
-          git remote add main git@github.com:CodesJoker/git2.git
-          git add .
-          git commit -m 'auto push'
-          git push -f
+-----END OPENSSH PRIVATE KEY-----'
+    steps: 
+      run: |
+      git config user.name CodesJoker
+      git config user.email 2983937743@qq.com
+      git remote add main git@github.com:CodesJoker/git2.git
+      git add .
+      git commit -m 'auto push'
+      git push -f
