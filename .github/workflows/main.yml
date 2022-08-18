@@ -1,0 +1,19 @@
+name: deplay
+on:
+  push: 
+    branches: 
+      - main
+# 按顺序运行作业
+jobs: 
+#任务ID
+  deploy:
+    runs-on: ubuntu-latest # 使用ubuntu系统镜像运行自动化脚本3
+    steps: 
+      - name: 检出本地代码
+        uses: actions/checkout@v3
+      - name: 同步代码
+        run: |
+          git config user.name CodesJoker
+          git config user.email 2983937743@qq.com
+          git remote set-url --push main git@github.com:CodesJoker/git2.git
+          git push -f
