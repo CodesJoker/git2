@@ -33,7 +33,7 @@ on:
 jobs: 
 #任务ID
   deploy:
-    runs-on: ubuntu-latest # 使用ubuntu系统镜像运行自动化脚本3
+    runs-on: ubuntu-latest # 使用ubuntu系统镜像运行自动化脚本1
     steps: 
       - name: 检出本地代码
         uses: actions/checkout@v3
